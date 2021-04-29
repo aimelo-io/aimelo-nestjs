@@ -13,11 +13,21 @@
     "target": "es2017",
     "sourceMap": true,
     "skipLibCheck": true,
-    "lib": ["es7", "ES2019", "ESNext"],
-    "baseUrl": "./src",
+    "lib": [
+      "es7",
+      "ES2019",
+      "ESNext"
+    ],
     "paths": {
-      "@aimelo/*": ["./*/src"]
+      "@aimelo/*": ["../../*/src"]
     }
   },
-  "exclude": ["node_modules", "**/*.spec.ts"]
+  "include": [
+    "packages/**/*",
+    "integration/**/*"
+  ],
+  "exclude": [
+    "./node_modules",
+    "**/*.spec.ts"
+  ]
 }

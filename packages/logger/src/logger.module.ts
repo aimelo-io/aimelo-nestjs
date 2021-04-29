@@ -1,8 +1,7 @@
-import { AsyncOptionsProvider, createAsyncOptionsProviderWithDependents } from '@aimelo/common';
-import { ApplicationService } from '@aimelo/common/services/application.service';
+import { AsyncOptionsProvider, createAsyncOptionsProviderWithDependents, ApplicationService } from '@aimelo/common';
 import { DynamicModule, FactoryProvider, Global, Module, ValueProvider } from '@nestjs/common';
-import { fromEvent, merge, Observable, Subject } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { fromEvent, merge, Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { LOGGER_LABEL_TOKEN, LOGGER_OPTION_TOKEN, LOGGER_SUBJECT_TOKEN } from './constants';
 import { LoggerOutput } from './interfaces';
 import { LoggerOptions } from './interfaces/logger-options.interface';
@@ -38,7 +37,7 @@ export class LoggerModule {
                 options.handleRejections && events.push(`unhandledRejection`);
 
                 const observableProcess = events.map(event =>
-                    fromEvent(process, event).pipe(
+                    fromEvent<[string | Error]>(process as any, event).pipe(
                         map(v => ({
                             error: v[0] instanceof Error ? v[0] : new Error(v[0]),
                             event,
@@ -70,7 +69,7 @@ export class LoggerModule {
                     )
                     .subscribe(l =>
                         options.transports
-                            .filter(v => v.level === undefined || l.level <= v.level)
+                            ?.filter(v => v.level === undefined || v?.level <= v.level)
                             .map(o => o.transport.output(l)),
                     );
                 return subject;
