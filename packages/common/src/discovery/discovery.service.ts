@@ -25,13 +25,13 @@ export class DiscoveryService {
         }
     }
 
-    scanMetadata<T>(metaKey: MetaKey, instance: object, prototype?: object) {
+    scanMetadata<T>(metaKey: MetaKey, instance: object, prototype?: object): Omit<DiscoveredMethod, 'wrapper'>[] {
         const instancePrototype = isUndefined(prototype) ? Object.getPrototypeOf(instance) : prototype;
-        return this.metadataScanner.scanFromPrototype<unknown, Omit<DiscoveredMethod<T>, 'wrapper'>>(
-            instance,
-            instancePrototype,
-            method => this.exploreMethodMetadata<T>(metaKey, instancePrototype, method),
-        );
+        return this.metadataScanner
+            .scanFromPrototype(instance, instancePrototype, method =>
+                this.exploreMethodMetadata<T>(metaKey, instancePrototype, method),
+            )
+            .filter(x => !!x.metadata);
     }
 
     protected exploreMethodMetadata<T>(
@@ -41,7 +41,7 @@ export class DiscoveryService {
     ): Omit<DiscoveredMethod, 'wrapper'> {
         const callback = prototype[method];
         const metadata: T = Reflect.getMetadata(metaKey, callback);
-        return isUndefined(metadata) ? null : { callback, method, metadata };
+        return { callback, method, metadata };
     }
 
     components(filter?: ModuleFilter): InstanceWrapper[] {

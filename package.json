@@ -14,7 +14,8 @@
     "author": "aimelo <aimelo@gmail.com>",
     "dependencies": {
         "@nestjs/common": "^7.6.15",
-        "@nestjs/core": "^7.6.15"
+        "@nestjs/core": "^7.6.15",
+        "reflect-metadata": "^0.1.13"
     },
     "devDependencies": {
         "@types/lodash": "^4.14.168",
