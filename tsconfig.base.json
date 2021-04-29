@@ -19,15 +19,13 @@
       "ESNext"
     ],
     "paths": {
-      "@aimelo/*": ["../../*/src"]
+      "@aimelo/*": [
+        "../*"
+      ]
     }
   },
-  "include": [
-    "packages/**/*",
-    "integration/**/*"
-  ],
   "exclude": [
     "./node_modules",
-    "**/*.spec.ts"
+    "./**/*.spec.ts"
   ]
 }
