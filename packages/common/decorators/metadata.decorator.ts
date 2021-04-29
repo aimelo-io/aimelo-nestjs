@@ -8,9 +8,9 @@ export function ExtendMetadata<K = string, V = any>(
         descriptor?: TypedPropertyDescriptor<Y>,
     ) => {
         const metadataTarget = descriptor ? descriptor.value : target;
-        const metadataData = Reflect.getMetadata(metadataKey, metadataTarget) || [];
+        const metadataData = Reflect.getMetadata(metadataKey, metadataTarget as any) || [];
         const value = [...metadataData, ...metadataValues];
-        Reflect.defineMetadata(metadataKey, value, metadataTarget);
+        Reflect.defineMetadata(metadataKey, value, metadataTarget as any);
         return descriptor || target;
     };
 }

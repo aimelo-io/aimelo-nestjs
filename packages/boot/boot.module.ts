@@ -1,7 +1,6 @@
 import {
     AsyncOptionsProvider,
     createAsyncOptionsProviderWithDependents,
-    getStoreToken,
     LOADER_SOURCE_TOKEN,
     SERVICE_INIT_TOKEN,
 } from '@aimelo/common';
@@ -60,14 +59,14 @@ export class BootModule {
         let watch$: Observable<string> = of();
         const root = options.root || process.cwd();
         if (options.watch) {
-            const watcher = watch(root, options.watchOption);
+            const watcher = watch(root, options.watchOption || {});
             watch$ = fromEvent<[string, string]>(watcher, 'change').pipe(
                 map(v => v[0]),
                 share(),
             );
         }
         const observables = options.files
-            .map(f => [f, ...options?.profile?.map(p => `${f}-${p}`)])
+            .map(f => [f, ...(options?.profile?.map(p => `${f}-${p}`) || [])])
             .flat()
             .map(f => `${f}.yml`)
             .map(f => concat(of(f), watch$.pipe(filter(w => w === f))))
@@ -80,6 +79,6 @@ export class BootModule {
 
     protected static loadYAML(file: string, options: BootOptions) {
         const path = resolve(options.root || process.cwd(), file);
-        return loadYAML(path, options.context);
+        return loadYAML(path, options.context || {});
     }
 }

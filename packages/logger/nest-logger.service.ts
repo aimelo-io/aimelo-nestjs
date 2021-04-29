@@ -1,7 +1,6 @@
 import { Injectable, LoggerService as NestLogger } from '@nestjs/common';
 import { LogLevel } from './logger-enums';
 import { LoggerOutput } from './interfaces';
-import { LoggerTransport } from './interfaces/logger-transport.interface';
 import { LoggerService } from './logger.service';
 import { isString } from 'lodash';
 
@@ -31,7 +30,7 @@ export class NestLoggerService implements NestLogger {
     verbose?(message: string, context?: string): void {
         return this.output(LogLevel.VERBOSE, context, { message });
     }
-    protected output(level: LogLevel, label: string, output: LoggerOutput): void {
+    protected output(level: LogLevel, label: string | undefined, output: LoggerOutput): void {
         return this.logger.output({ ...output, level, label });
     }
 }

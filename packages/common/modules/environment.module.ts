@@ -10,7 +10,6 @@ import { readFileSync } from 'fs';
 import { merge } from 'lodash';
 import { ClassProvider } from '@nestjs/common';
 import { StoreService } from '../support';
-import { getStoreToken } from '../utils';
 import { of } from 'rxjs';
 import { EnvironmentService } from '../services';
 

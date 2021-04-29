@@ -2,7 +2,7 @@ import { access, readFile } from 'fs/promises';
 import { compile } from 'handlebars';
 import { load } from 'js-yaml';
 
-export async function loadYAML<T>(file: string, context: Record<string, any>): Promise<T> {
+export async function loadYAML<T>(file: string, context: Record<string, any>): Promise<T | undefined> {
     try {
         await access(file);
     } catch {

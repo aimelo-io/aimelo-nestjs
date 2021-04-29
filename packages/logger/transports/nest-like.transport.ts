@@ -1,4 +1,3 @@
-import { isObject } from '@nestjs/common/utils/shared.utils';
 import { LoggerOutput, LoggerTransport } from '../interfaces';
 import * as clc from 'cli-color';
 import { LogLevel } from '../logger-enums';
@@ -13,11 +12,12 @@ const levelColor: Record<LogLevel, clc.Format> = {
 
 export class NestLikeTransport implements LoggerTransport {
     output(log: LoggerOutput): void {
-        const color = levelColor[log.level] || clc.green;
+        const color = log.level ? levelColor[log.level] : clc.green;
         const pid = color(`[${log.app}] ${log.pid || '-'}   - `);
         const label = clc.yellow(`[${log.label || '-'}] `);
         const diff = clc.yellow(` +${log.timestampDiff}ms`);
-        const timestamp = new Date(log.timestamp).toLocaleString(undefined, {
+        const date = log.timestamp ? new Date(log.timestamp) : new Date();
+        const timestamp = date.toLocaleString(undefined, {
             year: 'numeric',
             hour: 'numeric',
             minute: 'numeric',
