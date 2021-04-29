@@ -1,5 +1,3 @@
-/** @format */
-
 import { Observable, ReplaySubject } from 'rxjs';
 
 export interface Store<M> {

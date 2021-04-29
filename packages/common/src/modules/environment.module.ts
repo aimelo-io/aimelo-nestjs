@@ -1,5 +1,3 @@
-/** @format */
-
 import { ENVIRONMENT_OPTIONS_TOKEN, LOADER_SOURCE_TOKEN, SERVICE_INIT_TOKEN } from '../constants';
 import { combineLatest, Observable, EMPTY } from 'rxjs';
 import { map, share } from 'rxjs/operators';

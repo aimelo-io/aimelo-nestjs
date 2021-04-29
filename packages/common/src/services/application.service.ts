@@ -1,5 +1,3 @@
-/** @format */
-
 import { Inject, Injectable } from '@nestjs/common';
 import { APPLICATION_OPTIONS } from '../constants';
 import { ApplicationOptions } from '../interfaces';

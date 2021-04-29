@@ -1,5 +1,3 @@
-/** @format */
-
 import { isFunction } from '@nestjs/common/utils/shared.utils';
 import { MonoTypeOperatorFunction, timer } from 'rxjs';
 import { delayWhen, retryWhen } from 'rxjs/operators';

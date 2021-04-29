@@ -1,5 +1,3 @@
-/** @format */
-
 export * from './async-options-provider.interface';
 export * from './store.interface';
 export * from './discovery.interface';

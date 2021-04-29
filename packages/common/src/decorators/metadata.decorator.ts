@@ -1,5 +1,3 @@
-/** @format */
-
 export function ExtendMetadata<K = string, V = any>(
     metadataKey: K,
     ...metadataValues: V[]

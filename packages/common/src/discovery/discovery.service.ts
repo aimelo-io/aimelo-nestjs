@@ -1,5 +1,3 @@
-/** @format */
-
 import { Discovered, DiscoveredMethod, ModuleFilter, MetaKey } from '../interfaces';
 import { flatten, Injectable } from '@nestjs/common';
 import { InstanceWrapper } from '@nestjs/core/injector/instance-wrapper';

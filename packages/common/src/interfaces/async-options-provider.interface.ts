@@ -1,5 +1,3 @@
-/** @format */
-
 import { Abstract, ModuleMetadata, Type } from '@nestjs/common';
 import { Provide } from '../types';
 

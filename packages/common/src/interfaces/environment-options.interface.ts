@@ -1,5 +1,3 @@
-/** @format */
-
 import { Type } from '@nestjs/common';
 import { PathLike } from 'fs';
 

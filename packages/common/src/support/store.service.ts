@@ -1,5 +1,3 @@
-/** @format */
-
 import { assign, get, merge, set, unset } from 'lodash';
 import { Observable, ReplaySubject } from 'rxjs';
 import { first, share } from 'rxjs/operators';

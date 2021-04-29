@@ -1,5 +1,3 @@
-/** @format */
-
 import { Inject } from '@nestjs/common';
 import { getStoreToken } from '../utils';
 

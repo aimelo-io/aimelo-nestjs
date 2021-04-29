@@ -1,5 +1,3 @@
-/** @format */
-
 import { InstanceWrapper } from '@nestjs/core/injector/instance-wrapper';
 import { Module } from '@nestjs/core/injector/module';
 

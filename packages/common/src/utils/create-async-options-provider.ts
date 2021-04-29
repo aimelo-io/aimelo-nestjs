@@ -1,5 +1,3 @@
-/** @format */
-
 import { FactoryProvider } from '@nestjs/common';
 import { ASYNC_OPTIONS_TOKEN } from '../constants';
 import { StartUpException } from '../exceptions';

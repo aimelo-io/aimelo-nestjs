@@ -1,5 +1,3 @@
-/** @format */
-
 import { DynamicModule, Global, Module, ValueProvider } from '@nestjs/common';
 import { APPLICATION_OPTIONS } from '../constants';
 import { ApplicationOptions } from '../interfaces';

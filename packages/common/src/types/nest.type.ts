@@ -1,5 +1,3 @@
-/** @format */
-
 import { Abstract, Type, ClassProvider, ValueProvider, FactoryProvider, ExistingProvider } from '@nestjs/common';
 
 export type Provide<T = any> = string | symbol | Abstract<T> | Type<T>;

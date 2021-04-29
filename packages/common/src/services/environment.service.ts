@@ -1,5 +1,3 @@
-/** @format */
-
 import { Inject } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { LOADER_SOURCE_TOKEN } from '../constants';
