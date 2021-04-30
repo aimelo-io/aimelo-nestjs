@@ -11,12 +11,12 @@
         "build:prod": "gulp build",
         "build:samples": "gulp install:samples && yarn run build && gulp build:samples && gulp test:samples && gulp test:e2e:samples",
         "clean": "gulp clean:bundle",
-        "prerelease": "gulp copy-misc && gulp build --dist dist/@aimelo",
-        "publish": "yarn run prerelease && yarn run build:prod && lerna publish --force-publish --exact -m \"chore(@aimelo) publish %s release\"",
-        "publish:beta": "yarn run prerelease && yarn run build:prod && lerna publish --npm-tag=beta -m \"chore(@aimelo) publish %s release\"",
-        "publish:next": "yarn run prerelease && yarn run build:prod && lerna publish --npm-tag=next --skip-git -m \"chore(@aimelo) publish %s release\"",
-        "publish:rc": "yarn run prerelease && yarn run build:prod && lerna publish --npm-tag=rc -m \"chore(@aimelo) publish %s release\"",
-        "publish:test": "yarn run prerelease && yarn run build:prod && lerna publish --force-publish --npm-tag=test --skip-git -m \"chore(@aimelo) publish %s release\""
+        "prerelease": "gulp copy-misc --dist dist/@aimelo && gulp build --dist dist/@aimelo",
+        "publish": "yarn run prerelease && yarn run build:prod && lerna publish --force-publish --exact -m \"ewenlaz(@aimelo) publish %s release\"",
+        "publish:beta": "yarn run prerelease && yarn run build:prod && lerna publish --npm-tag=beta -m \"ewenlaz(@aimelo) publish %s release\"",
+        "publish:next": "yarn run prerelease && yarn run build:prod && lerna publish --npm-tag=next --skip-git -m \"ewenlaz(@aimelo) publish %s release\"",
+        "publish:rc": "yarn run prerelease && yarn run build:prod && lerna publish --npm-tag=rc -m \"ewenlaz(@aimelo) publish %s release\"",
+        "publish:test": "yarn run prerelease && yarn run build:prod && lerna publish --force-publish --npm-tag=test --skip-git -m \"ewenlaz(@aimelo) publish %s release\""
     },
     "version": "0.0.0",
     "main": "index.js",

@@ -25,7 +25,7 @@ const samplePath = 'sample';
 const packagePaths = getDirs(source);
 const packages = {
     common: createProject('packages/common/tsconfig.json'),
-    boot: createProject('packages/boot/tsconfig.json'),
+    boot: createProject('packages/common/tsconfig.json'),
 };
 
 function copyMisc() {
@@ -54,6 +54,10 @@ const modules = Object.keys(packages);
 
 const distId = process.argv.indexOf('--dist');
 const dist = distId < 0 ? source : process.argv[distId + 1];
+
+if (distId < 0) {
+    throw new Error('gulp error, must have argv --dist');
+}
 
 /**
  * Watches the packages/* folder and
@@ -104,8 +108,8 @@ task('default', defaultTask);
 
 function move() {
     const samplesDirs = getDirs(samplePath);
-    const distFiles = src(['node_modules/@aimelo/**/*']);
-    return samplesDirs.reduce((distFile, dir) => distFile.pipe(dest(join(dir, '/node_modules/@aimelo'))), distFiles);
+    const distFiles = src([`${dist}/**/*`]);
+    return samplesDirs.reduce((distFile, dir) => distFile.pipe(dest(join(dir, '`${dist}'))), distFiles);
 }
 
 task('move', move);

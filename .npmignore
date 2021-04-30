@@ -7,6 +7,8 @@
 !*.d.ts
 
 # configuration
-tslint.json
+package-lock.json
+yarn.lock
 tsconfig.json
+tsconfig.*.json
 .prettierrc
