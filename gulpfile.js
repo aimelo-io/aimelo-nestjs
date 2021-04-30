@@ -55,10 +55,6 @@ const modules = Object.keys(packages);
 const distId = process.argv.indexOf('--dist');
 const dist = distId < 0 ? source : process.argv[distId + 1];
 
-if (distId < 0) {
-    throw new Error('gulp error, must have argv --dist');
-}
-
 /**
  * Watches the packages/* folder and
  * builds the package on file change
